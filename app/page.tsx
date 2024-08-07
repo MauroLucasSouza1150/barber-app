@@ -6,8 +6,12 @@ import Image from "next/image";
 import { Card, CardContent } from "./_components/ui/card";
 import { Badge } from "./_components/ui/badge";
 import { Avatar, AvatarImage } from "./_components/ui/avatar";
+import { db } from "./_lib/prisma";
+import BarbershopItem from "./_components/BarbershopItem";
 
-export default function Home() {
+export default async function Home() {
+  const barbershops = await db.barbershop.findMany({})
+  console.log({ barbershops })
   return (
     <div>
       <Header />
@@ -26,13 +30,16 @@ export default function Home() {
           <Image src="/banner-01.png" alt="Imagem Banner" fill className="object-cover rounded-xl" />
         </div>
 
-        <Card className="mt-4">
+        <h2 className="text-xs font-bold uppercase text-gray-400 mt-6 mb-3">Agendamentos</h2>
+
+        <Card>
           <CardContent className="flex justify-between p-0">
             <div className="flex flex-col gap-2 py-5 pl-5">
               <Badge className="w-fit">Confirmado</Badge>
               <h3>Corte de Cabelo</h3>
 
               <div className="flex items-center gap-2">
+
                 <Avatar className="h-6 w-6">
                   <AvatarImage src="https://utfs.io/f/c97a2dc9-cf62-468b-a851-bfd2bdde775f-16p.png"/>
                 </Avatar>
@@ -47,7 +54,22 @@ export default function Home() {
             </div>
           </CardContent>
         </Card>
+
+        <h2 className="text-xs font-bold uppercase text-gray-400 mt-6 mb-3">Recomendados</h2>
+        <div className="flex gap-4 overflow-auto [&::-webkit-scrollbar]:hidden">
+          {barbershops.map((barbershop) => (
+            <BarbershopItem key={barbershop.id} barbershop={barbershop} />
+          ))}
+        </div>
       </div>
+
+      <footer>
+        <Card>
+          <CardContent className="px-4 py-5">
+            <p className="text-sm text-gray-400 font-bold">@2024Copyritht-FSW-Barber</p>
+          </CardContent>
+        </Card>
+      </footer>
     </div>
   );
 }
