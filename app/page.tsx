@@ -3,7 +3,6 @@ import Header from "./_components/Header";
 import { Input } from "./_components/ui/input";
 import { Button } from "./_components/ui/button";
 import Image from "next/image";
-import { Card, CardContent } from "./_components/ui/card";
 import { db } from "./_lib/prisma";
 import BarbershopItem from "./_components/BarbershopItem";
 import BokingItem from "./_components/BokingItem";
@@ -56,13 +55,6 @@ export default async function Home() {
         </div>
       </div>
 
-      <footer>
-        <Card>
-          <CardContent className="px-4 py-5">
-            <p className="text-sm text-gray-400 font-bold">@2024Copyritht-FSW-Barber</p>
-          </CardContent>
-        </Card>
-      </footer>
     </div>
   );
 }
