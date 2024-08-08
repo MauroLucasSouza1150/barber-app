@@ -8,8 +8,8 @@ import BarbershopItem from "./_components/BarbershopItem";
 import BokingItem from "./_components/BokingItem";
 
 export default async function Home() {
-  const barbershops = await db.barbershop.findMany({})
-  console.log({ barbershops })
+  const barbershops = await db.barbershop.findMany({});
+
   return (
     <div>
       <Header />
