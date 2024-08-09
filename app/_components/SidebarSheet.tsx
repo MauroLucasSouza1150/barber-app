@@ -11,7 +11,7 @@ import {
   DialogContent,
   DialogDescription,
   DialogHeader,
-  DialogTitle,
+  DialogTitle, 
   DialogTrigger,
 } from "./ui/dialog"
 import { signIn, signOut, useSession } from "next-auth/react"
@@ -96,18 +96,18 @@ const SidebarSheet = () => {
       <div className="flex flex-col gap-2 border-b border-solid py-5">
         {quickSearchOptions.map((option) => (
           <SheetClose key={option.title} asChild>
-            <Button className="justify-start gap-2" variant="ghost" asChild>
-              <Link href={`/barbershops?service=${option.title}`}>
-                <Image
-                  alt={option.title}
-                  src={option.imageUrl}
-                  height={18}
-                  width={18}
-                />
-                {option.title}
-              </Link>
-            </Button>
-          </SheetClose>
+          <Button className="justify-start gap-2" variant="ghost" asChild>
+            <Link href={`/barbershops?service=${option.title}`}>
+              <Image
+                alt={option.title}
+                src={option.imageUrl}
+                height={18}
+                width={18}
+              />
+              {option.title}
+            </Link>
+          </Button>
+        </SheetClose>
         ))}
       </div>
 
